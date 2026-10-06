@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Eletropel • Preparador WhatsApp",
+  "version": "1.0.0",
+  "description": "Prepara imagem e legenda no WhatsApp Web; o envio permanece manual.",
+  "permissions": ["tabs", "scripting", "storage"],
+  "host_permissions": ["https://web.whatsapp.com/*"],
+  "background": {"service_worker": "background.js"},
+  "content_scripts": [{"matches":["https://web.whatsapp.com/*"],"js":["content.js"],"run_at":"document_idle"}],
+  "action": {"default_title":"Eletropel WhatsApp"}
+}
