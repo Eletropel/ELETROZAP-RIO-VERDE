@@ -1,21 +1,4 @@
-const MSG = `Olá, {NOME}! 
-
-A Eletropel tem uma novidade muito especial para você! 🎉
-
-Estamos inaugurando nossa nova filial em Rio Verde/GO e queremos convidar você para estar conosco nesse momento.
-
-📅 07/10 — quarta-feira
-🕘 Às 9h
-📍 Av. Presidente Vargas, nº 3027
-QD 44 • LT 04 • Vila Maria — Rio Verde/GO
-
-Você é nosso convidado especial!
-
-Esperamos você! ❤️💛
-
-Eletropel — Distribuidora de Auto Peças
-📲 (64) 3050-9700
-;
+const MSG = `Olá, {NOME}! 👋\n\nA Eletropel tem uma novidade muito especial para você! 🎉\n\nEstamos inaugurando nossa nova filial em Rio Verde/GO e queremos convidar você para estar conosco nesse momento.\n\n📅 07/10 — quarta-feira\n🕘 Às 9h\n📍 Av. Presidente Vargas, nº 3027\nQD 44 • LT 04 • Vila Maria — Rio Verde/GO\n\nVocê é nosso convidado especial!\n\nEsperamos você! ❤️💛\n\nEletropel — Distribuidora de Auto Peças\n📲 (64) 3050-9700`;
 
 let clients = JSON.parse(localStorage.getItem('eletropel_clients') || '[]');
 let current = -1;
@@ -69,8 +52,7 @@ function openWhatsApp(){
   const text=msg(c);
   // A extensão do Chrome lê text/phone da URL e prepara a imagem + legenda.
   const url=`https://web.whatsapp.com/send?phone=${encodeURIComponent(c.phone)}&eletro_caption=${encodeURIComponent(text)}`;
-  window.postMessage({type:'ELETRO_CAPTION',caption:text},'*');
-  setTimeout(()=>window.open(url,'_blank'),250);
+  window.open(url,'_blank');
 }
 $('open').onclick=openWhatsApp;
 $('sentBtn').onclick=()=>{
