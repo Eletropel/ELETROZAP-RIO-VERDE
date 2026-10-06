@@ -50,10 +50,8 @@ function openWhatsApp(){
   if(current<0 || !clients[current]) return;
   const c=clients[current];
   const text=msg(c);
-  // NÃO usamos o parâmetro nativo ?text= do WhatsApp: ele preencheria o compositor normal
-  // e faria o texto duplicar quando a extensão colocasse a mesma mensagem na legenda da imagem.
-  // A extensão lê somente o parâmetro personalizado `eletro_caption`.
-  const url=`https://web.whatsapp.com/send?phone=${encodeURIComponent(c.phone)}&eletro_caption=${encodeURIComponent(text)}`;
+  // A extensão do Chrome lê text/phone da URL e prepara a imagem + legenda.
+  const url=`https://web.whatsapp.com/send?phone=${encodeURIComponent(c.phone)}&text=${encodeURIComponent(text)}`;
   window.open(url,'_blank');
 }
 $('open').onclick=openWhatsApp;
