@@ -51,8 +51,9 @@ function openWhatsApp(){
   const c=clients[current];
   const text=msg(c);
   // A extensão do Chrome lê text/phone da URL e prepara a imagem + legenda.
-  const url=`https://web.whatsapp.com/send?phone=${encodeURIComponent(c.phone)}&text=${encodeURIComponent(text)}`;
-  window.open(url,'_blank');
+  const url=`https://web.whatsapp.com/send?phone=${encodeURIComponent(c.phone)}&eletro_caption=${encodeURIComponent(text)}`;
+  window.postMessage({type:'ELETRO_CAPTION',caption:text},'*');
+  setTimeout(()=>window.open(url,'_blank'),250);
 }
 $('open').onclick=openWhatsApp;
 $('sentBtn').onclick=()=>{
