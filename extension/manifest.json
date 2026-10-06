@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Eletropel • WhatsApp Web",
+  "version": "1.1.0",
+  "description": "Prepara o convite da Eletropel como imagem + legenda no WhatsApp Web. O envio permanece manual.",
+  "permissions": [],
+  "host_permissions": ["https://web.whatsapp.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["convite.png"],
+      "matches": ["https://web.whatsapp.com/*"]
+    }
+  ],
+  "action": {"default_title":"Eletropel • WhatsApp Web"}
+}
